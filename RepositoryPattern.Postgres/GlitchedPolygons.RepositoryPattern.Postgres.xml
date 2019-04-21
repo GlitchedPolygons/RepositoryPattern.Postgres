@@ -1,0 +1,132 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GlitchedPolygons.RepositoryPattern.Postgres</name>
+    </assembly>
+    <members>
+        <member name="T:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2">
+            <summary>
+            Repository base class for PostgreSQL databases.
+            Implements the <see cref="T:GlitchedPolygons.RepositoryPattern.IRepository`2" /> interface.
+            </summary>
+            <typeparam name="T1">The type of entity stored in the repository. The name of this type should also exactly match the name of the db table!</typeparam>
+            <typeparam name="T2">The type of unique id with which the entities will be identified inside the repo (typically this will be either a <c>string</c> containing a GUID or an auto-incremented <c>int</c>).</typeparam>
+            <seealso cref="T:GlitchedPolygons.RepositoryPattern.IRepository`2" />
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String)">
+            <summary>
+            Creates a new PostgreSQL repository using a specific connection string.
+            </summary>
+            <param name="connectionString">The postgres db connection string. Ensure that this is valid!</param>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.OpenConnection">
+            <summary>
+            Opens a <see cref="T:System.Data.IDbConnection"/> to the PostgreSQL database. <para> </para>
+            Does not dispose automatically: make sure to wrap your usage into a <see langowrd="using"/> block.
+            </summary>
+            <returns>The opened <see cref="T:System.Data.IDbConnection"/> (remember to dispose of it asap after you're done!).</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Get(`1)">
+            <summary>
+            Gets an entity by its unique identifier.
+            </summary>
+            <param name="id">The entity's unique identifier.</param>
+            <returns>The first found <see cref="T:GlitchedPolygons.RepositoryPattern.IEntity`1" />; <c>null</c> if nothing was found.</returns>
+        </member>
+        <member name="P:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Item(`1)">
+            <summary>
+            Gets an entity by its unique identifier.
+            </summary>
+            <param name="id">The entity's unique identifier.</param>
+            <returns>The first found <see cref="T:GlitchedPolygons.RepositoryPattern.IEntity`1" />; <c>null</c> if nothing was found.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.GetAll">
+            <summary>
+            Gets all entities from the repository.
+            </summary>
+            <returns>All entities inside the repo.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SingleOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Gets a single entity from the repo according to the specified predicate condition.<para> </para>
+            If 0 or &gt;1 entities are found, <c>null</c> is returned.<para> </para>
+            WARNING: Can be very slow! For specialized queries, just create a new repository! Derive from this class and create custom SQL queries that return the mapped types that you need.
+            </summary>
+            <param name="predicate">The search predicate.</param>
+            <returns>Single found entity; <c>default(<typeparamref name="T1"/>)</c> (usually this is <c>null</c>) if 0 or &gt;1 entities were found.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Finds all entities according to the specified predicate <see cref="T:System.Linq.Expressions.Expression" />.<para> </para>
+            WARNING: Can be very slow! For specialized queries, just create a new repository! Derive from this class and create custom SQL queries that return the mapped types that you need.
+            </summary>
+            <param name="predicate">The search predicate (all entities that match the provided conditions will be added to the query's result).</param>
+            <returns>The found entities (<see cref="T:System.Collections.Generic.IEnumerable`1" />).</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Add(`0)">
+            <summary>
+            Adds the specified entity to the data repository. <para> </para>
+            You need to ENSURE the uniqueness of the addendum <see cref="P:GlitchedPolygons.RepositoryPattern.IEntity`1.Id"/>!
+            </summary>
+            <param name="entity">The entity to add.</param>
+            <returns>Whether the entity could be added successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.AddRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Adds multiple entities at once.<para> </para>
+            You need to ENSURE the uniqueness of each added <see cref="P:GlitchedPolygons.RepositoryPattern.IEntity`1.Id"/>!
+            </summary>
+            <param name="entities">The entities to add.</param>
+            <returns>Whether the entities were added successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Update(`0)">
+            <summary>
+            Updates the specified entity.
+            </summary>
+            <param name="entity">The entity to update.</param>
+            <returns>Whether the entity could be updated successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove(`0)">
+            <summary>
+            Removes the specified entity.
+            </summary>
+            <param name="entity">The entity to remove.</param>
+            <returns>Whether the entity could be removed successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove(`1)">
+            <summary>
+            Removes the specified entity.
+            </summary>
+            <param name="id">The unique id of the entity to remove.</param>
+            <returns>Whether the entity could be removed successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveAll">
+            <summary>
+            Removes all entities at once from the repository.
+            </summary>
+            <returns>Whether the entities were removed successfully or not. If the repository was already empty, <c>false</c> is returned (because nothing was actually &lt;&lt;removed&gt;&gt; ).</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">
+            <summary>
+            Removes all entities that match the specified conditions (via the predicate <see cref="T:System.Linq.Expressions.Expression" /> parameter).<para> </para>
+            WARNING: Can be slow. If you know the entities' id, please use the other RemoveRange overloads!
+            </summary>
+            <param name="predicate">The predicate <see cref="T:System.Linq.Expressions.Expression" /> that defines which entities should be removed.</param>
+            <returns>Whether the entities were removed successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            Removes the range of entities from the repository.
+            </summary>
+            <param name="entities">The entities to remove.</param>
+            <returns>Whether all entities were removed successfully or not.</returns>
+        </member>
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Collections.Generic.IEnumerable{`1})">
+            <summary>
+            Removes the range of entities from the repository.
+            </summary>
+            <param name="ids">The unique ids of the entities to remove.</param>
+            <returns>Whether all entities were removed successfully or not.</returns>
+        </member>
+    </members>
+</doc>
