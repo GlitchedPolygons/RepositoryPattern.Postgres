@@ -2,8 +2,8 @@
 using System.Data;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 using Dapper;
 using Npgsql;
@@ -19,16 +19,21 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
     /// <seealso cref="IRepository{T1, T2}" />
     public abstract class PostgresRepository<T1, T2> : IRepository<T1, T2> where T1 : IEntity<T2>
     {
-        private readonly string typeName;
+        /// <summary>
+        /// The name of the underlying PostgreSQL database table where the repository entities are stored.
+        /// </summary>
+        public string TableName { get; }
+
         private readonly string connectionString;
 
         /// <summary>
         /// Creates a new PostgreSQL repository using a specific connection string.
         /// </summary>
         /// <param name="connectionString">The postgres db connection string. Ensure that this is valid!</param>
-        protected PostgresRepository(string connectionString)
+        /// <param name="tableName">Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</param>
+        protected PostgresRepository(string connectionString, string tableName = null)
         {
-            this.typeName = typeof(T1).Name;
+            this.TableName = string.IsNullOrEmpty(tableName) ? typeof(T1).Name : tableName;
             this.connectionString = connectionString;
         }
 
@@ -53,7 +58,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM public.\"{typeName}\" WHERE \"Id\" = @Id";
+                string sql = $"SELECT * FROM public.\"{TableName}\" WHERE \"Id\" = @Id";
                 return await sqlc.QueryFirstOrDefaultAsync<T1>(sql, new { Id = id });
             }
         }
@@ -69,7 +74,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 using (var sqlc = OpenConnection())
                 {
-                    string sql = $"SELECT * FROM public.\"{typeName}\" WHERE \"Id\" = @Id";
+                    string sql = $"SELECT * FROM public.\"{TableName}\" WHERE \"Id\" = @Id";
                     return sqlc.QueryFirstOrDefault<T1>(sql, new { Id = id });
                 }
             }
@@ -83,7 +88,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM public.\"{typeName}\"";
+                string sql = $"SELECT * FROM public.\"{TableName}\"";
                 return await sqlc.QueryAsync<T1>(sql);
             }
         }
@@ -161,7 +166,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 try
                 {
-                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{typeName}\" WHERE \"Id\" = @Id", new { Id = entity.Id });
+                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = entity.Id });
                     return affectedRows > 0;
                 }
                 catch (Exception)
@@ -182,7 +187,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 try
                 {
-                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{typeName}\" WHERE \"Id\" = @Id", new { Id = id });
+                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = id });
                     return affectedRows > 0;
                 }
                 catch (Exception)
@@ -202,7 +207,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 try
                 {
-                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{typeName}\"");
+                    int affectedRows = await sqlc.ExecuteAsync($"DELETE FROM public.\"{TableName}\"");
                     return affectedRows > 0;
                 }
                 catch (Exception)
@@ -240,7 +245,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
                     {
                         using (var sqlc = OpenConnection())
                         {
-                            if (sqlc.Execute($"DELETE FROM public.\"{typeName}\" WHERE \"Id\" = @Id", new { Id = e.Id }) <= 0)
+                            if (sqlc.Execute($"DELETE FROM public.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = e.Id }) <= 0)
                             {
                                 success = false;
                             }
@@ -273,7 +278,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
                     {
                         using (var sqlc = OpenConnection())
                         {
-                            if (sqlc.Execute($"DELETE FROM public.\"{typeName}\" WHERE \"Id\" = @Id", new { Id = id }) <= 0)
+                            if (sqlc.Execute($"DELETE FROM public.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = id }) <= 0)
                             {
                                 success = false;
                             }

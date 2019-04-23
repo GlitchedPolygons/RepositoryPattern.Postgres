@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -12,6 +12,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/GlitchedPolygons/RepositoryPattern/master/icon.png</PackageIconUrl>
     <PackageTags>c# repository design pattern base interface declaration db database access abstraction repositories sql relational rdbms dbms postgres postgresql elephant</PackageTags>
     <RepositoryUrl>https://github.com/GlitchedPolygons/RepositoryPattern.Postgres</RepositoryUrl>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
