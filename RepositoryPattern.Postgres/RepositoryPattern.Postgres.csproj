@@ -33,8 +33,8 @@
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="1.60.6" />
-    <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.4" />
-    <PackageReference Include="Npgsql" Version="4.0.6" />
+    <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.5" />
+    <PackageReference Include="Npgsql" Version="4.0.7" />
   </ItemGroup>
 
 </Project>
