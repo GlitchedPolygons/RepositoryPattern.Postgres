@@ -13,7 +13,7 @@
     <PackageTags>c# repository design pattern base interface declaration db database access abstraction repositories sql relational rdbms dbms postgres postgresql elephant</PackageTags>
     <RepositoryUrl>https://github.com/GlitchedPolygons/RepositoryPattern.Postgres</RepositoryUrl>
     <Version>1.0.3</Version>
-    <PackageReleaseNotes>Added icon</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
