@@ -20,6 +20,11 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
     /// <seealso cref="IRepository{T1, T2}" />
     public abstract class PostgresRepository<T1, T2> : IRepository<T1, T2> where T1 : IEntity<T2>
     {
+    	/// <summary>
+        /// The name of the underlying PostgreSQL schema (default is "public").
+        /// </summary>
+    	public string SchemaName { get; }
+
         /// <summary>
         /// The name of the underlying PostgreSQL database table where the repository entities are stored.
         /// </summary>
@@ -31,9 +36,11 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// Creates a new PostgreSQL repository using a specific connection string.
         /// </summary>
         /// <param name="connectionString">The postgres db connection string. Ensure that this is valid!</param>
+        /// <param name="schemaName">Optional PostgreSQL schema. If left out, the default schema ("public") is used.</param>
         /// <param name="tableName">Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</param>
-        protected PostgresRepository(string connectionString, string tableName = null)
+        protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null)
         {
+        	this.SchemaName = string.IsNullOrEmpty(schemaName) ? "public" : schemaName;
             this.TableName = string.IsNullOrEmpty(tableName) ? typeof(T1).Name : tableName;
             this.connectionString = connectionString;
         }
@@ -59,7 +66,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM public.\"{TableName}\" WHERE \"Id\" = @Id";
+                string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
                 return await sqlc.QueryFirstOrDefaultAsync<T1>(sql, new { Id = id });
             }
         }
@@ -75,7 +82,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 using (var sqlc = OpenConnection())
                 {
-                    string sql = $"SELECT * FROM public.\"{TableName}\" WHERE \"Id\" = @Id";
+                    string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
                     return sqlc.QueryFirstOrDefault<T1>(sql, new { Id = id });
                 }
             }
@@ -89,7 +96,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM public.\"{TableName}\"";
+                string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\"";
                 return await sqlc.QueryAsync<T1>(sql);
             }
         }
@@ -179,7 +186,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             try
             {
                 sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync($"DELETE FROM public.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = id }) > 0;
+                result = await sqlc.ExecuteAsync($"DELETE FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = id }) > 0;
             }
             catch (Exception)
             {
@@ -205,7 +212,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             try
             {
                 sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync($"DELETE FROM public.\"{TableName}\"") > 0;
+                result = await sqlc.ExecuteAsync($"DELETE FROM {SchemaName}.\"{TableName}\"") > 0;
             }
             catch (Exception)
             {
@@ -253,7 +260,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             try
             {
                 var sql = new StringBuilder(256)
-                    .Append("DELETE FROM public.")
+                    .Append("DELETE FROM ").Append(SchemaName).Append('.')
                     .Append('\"')
                     .Append(TableName)
                     .Append('\"')

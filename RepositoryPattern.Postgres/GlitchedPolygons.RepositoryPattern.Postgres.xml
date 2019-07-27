@@ -13,16 +13,22 @@
             <typeparam name="T2">The type of unique id with which the entities will be identified inside the repo (typically this will be either a <c>string</c> containing a GUID or an auto-incremented <c>int</c>).</typeparam>
             <seealso cref="T:GlitchedPolygons.RepositoryPattern.IRepository`2" />
         </member>
+        <member name="P:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName">
+            <summary>
+            The name of the underlying PostgreSQL schema (default is "public").
+            </summary>
+        </member>
         <member name="P:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.TableName">
             <summary>
             The name of the underlying PostgreSQL database table where the repository entities are stored.
             </summary>
         </member>
-        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String)">
+        <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String,System.String)">
             <summary>
             Creates a new PostgreSQL repository using a specific connection string.
             </summary>
             <param name="connectionString">The postgres db connection string. Ensure that this is valid!</param>
+            <param name="schemaName">Optional PostgreSQL schema. If left out, the default schema ("public") is used.</param>
             <param name="tableName">Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</param>
         </member>
         <member name="M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.OpenConnection">

@@ -16,14 +16,14 @@ references:
   fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2)
   nameWithType: PostgresRepository<T1, T2>
   nameWithType.vb: PostgresRepository(Of T1, T2)
-- uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String)
-  name: PostgresRepository(String, String)
-  href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_
-  commentId: M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String)
-  fullName: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository<T1, T2>.PostgresRepository(System.String, System.String)
-  fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2).PostgresRepository(System.String, System.String)
-  nameWithType: PostgresRepository<T1, T2>.PostgresRepository(String, String)
-  nameWithType.vb: PostgresRepository(Of T1, T2).PostgresRepository(String, String)
+- uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String,System.String)
+  name: PostgresRepository(String, String, String)
+  href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_System_String_
+  commentId: M:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String,System.String)
+  fullName: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository<T1, T2>.PostgresRepository(System.String, System.String, System.String)
+  fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2).PostgresRepository(System.String, System.String, System.String)
+  nameWithType: PostgresRepository<T1, T2>.PostgresRepository(String, String, String)
+  nameWithType.vb: PostgresRepository(Of T1, T2).PostgresRepository(String, String, String)
 - uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor*
   name: PostgresRepository
   href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_
@@ -233,6 +233,23 @@ references:
   fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2).RemoveRange
   nameWithType: PostgresRepository<T1, T2>.RemoveRange
   nameWithType.vb: PostgresRepository(Of T1, T2).RemoveRange
+- uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName
+  name: SchemaName
+  href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SchemaName
+  commentId: P:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName
+  fullName: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository<T1, T2>.SchemaName
+  fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2).SchemaName
+  nameWithType: PostgresRepository<T1, T2>.SchemaName
+  nameWithType.vb: PostgresRepository(Of T1, T2).SchemaName
+- uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName*
+  name: SchemaName
+  href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SchemaName_
+  commentId: Overload:GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName
+  isSpec: "True"
+  fullName: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository<T1, T2>.SchemaName
+  fullName.vb: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository(Of T1, T2).SchemaName
+  nameWithType: PostgresRepository<T1, T2>.SchemaName
+  nameWithType.vb: PostgresRepository(Of T1, T2).SchemaName
 - uid: GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SingleOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})
   name: SingleOrDefault(Expression<Func<T1, Boolean>>)
   href: api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html#GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SingleOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___

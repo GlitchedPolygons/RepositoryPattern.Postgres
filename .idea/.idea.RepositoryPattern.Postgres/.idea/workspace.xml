@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60f9cda4-5617-4b84-a5ac-cf6926ad36e2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/RepositoryPattern.Postgres/PostgresRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RepositoryPattern.Postgres/PostgresRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/docs/manifest.json" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/RepositoryPattern.Postgres/PostgresRepository.cs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-260">
+              <caret line="249" column="21" selection-start-line="249" selection-start-column="21" selection-end-line="249" selection-end-column="21" />
+              <folding>
+                <marker date="1564194371977" expanded="false" signature="6:194" ph="..." />
+                <marker date="1564194371977" expanded="true" signature="249:12089" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="256:843" ph="/// Repository base class for PostgreSQL databases. ... " />
+                <marker date="1564194371977" expanded="true" signature="941:12087" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="953:1069" ph="/// The name of the underlying PostgreSQL schema (default is &quot;public&quot;). ... " />
+                <marker date="1564194371977" expanded="true" signature="1118:1261" ph="/// The name of the underlying PostgreSQL database table where the repository entities are stored. ... " />
+                <marker date="1564194371977" expanded="true" signature="1363:1877" ph="/// Creates a new PostgreSQL repository using a specific connection string. ... " />
+                <marker date="1564194371977" expanded="true" signature="1990:2241" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="2251:2612" ph="/// Opens a &lt;see cref=&quot;IDbConnection&quot;/&gt; to the PostgreSQL database. &lt;para&gt; &lt;/para&gt; ... " />
+                <marker date="1564194371977" expanded="true" signature="2661:2830" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="2840:3142" ph="/// Gets an entity by its unique identifier. ... " />
+                <marker date="1564194371977" expanded="true" signature="3183:3460" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="3254:3450" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="3470:3772" ph="/// Gets an entity by its unique identifier. ... " />
+                <marker date="1564194371977" expanded="true" signature="3802:4132" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="3828:4122" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="3911:4108" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="4142:4290" ph="/// Gets all entities from the repository. ... " />
+                <marker date="1564194371977" expanded="true" signature="4342:4569" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="4413:4559" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="4579:5225" ph="/// Gets a single entity from the repo according to the specified predicate condition.&lt;para&gt; &lt;/para&gt; ... " />
+                <marker date="1564194371977" expanded="true" signature="5309:5577" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="5335:5477" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="5507:5567" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="5587:6212" ph="/// Finds all entities according to the specified predicate &lt;see cref=&quot;T:System.Linq.Expressions.Expression&quot; /&gt;.&lt; ... " />
+                <marker date="1564194371977" expanded="true" signature="6298:6579" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="6324:6469" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="6499:6569" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="6589:6939" ph="/// Adds the specified entity to the data repository. &lt;para&gt; &lt;/para&gt; ... " />
+                <marker date="1564194371977" expanded="true" signature="7000:7331" ph="/// Adds multiple entities at once.&lt;para&gt; &lt;/para&gt; ... " />
+                <marker date="1564194371977" expanded="true" signature="7412:7641" ph="/// Updates the specified entity. ... " />
+                <marker date="1564194371977" expanded="true" signature="7705:7934" ph="/// Removes the specified entity. ... " />
+                <marker date="1564194371977" expanded="true" signature="7984:8048" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="8058:8300" ph="/// Removes the specified entity. ... " />
+                <marker date="1564194371977" expanded="true" signature="8346:8858" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="8445:8649" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="8679:8739" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="8759:8820" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="8868:9171" ph="/// Removes all entities at once from the repository. ... " />
+                <marker date="1564194371977" expanded="true" signature="9215:9691" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="9314:9482" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="9512:9572" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="9592:9653" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="9701:10254" ph="/// Removes all entities that match the specified conditions (via the predicate &lt;see cref=&quot;T:System.Linq.Expressi ... " />
+                <marker date="1564194371977" expanded="true" signature="10336:10417" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="10427:10679" ph="/// Removes the range of entities from the repository. ... " />
+                <marker date="1564194371977" expanded="true" signature="10749:10835" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="10845:11110" ph="/// Removes the range of entities from the repository. ... " />
+                <marker date="1564194371977" expanded="true" signature="11175:12081" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="11274:11872" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="11610:11721" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="11902:11962" ph="{...}" />
+                <marker date="1564194371977" expanded="true" signature="11982:12043" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/RepositoryPattern.Postgres/PostgresRepository.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/.idea.RepositoryPattern.Postgres/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.RepositoryPattern.Postgres/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/.idea.RepositoryPattern.Postgres/.idea/indexLayout.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="321" />
+    <option name="y" value="228" />
+    <option name="width" value="2880" />
+    <option name="height" value="1575" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="SolutionExplorer" proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="AssemblyExplorer" />
+      <pane id="FileSystemExplorer" />
+      <pane id="SolutionExplorer">
+        <subPane>
+          <expand>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="RepositoryPattern.Postgres" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="RepositoryPattern.Postgres" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="RepositoryPattern.Postgres" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+        <option name="show-all-files" value="false" />
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
+    <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="CodeCleanupOptionsPage" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60f9cda4-5617-4b84-a5ac-cf6926ad36e2" name="Default Changelist" comment="" />
+      <created>1564194427274</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1564194427274</updated>
+      <workItem from="1564194430087" duration="79000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="79000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="2575" height="1415" extended-state="6" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info id="Image Layers" />
+      <window_info id="Capture Tool" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="NuGet" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Unit Tests" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Performance Profiler" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Errors In Solution" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Unit Tests Coverage" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" suspend="NONE" type="DotNet Exception Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/RepositoryPattern.Postgres/PostgresRepository.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-260">
+          <caret line="249" column="21" selection-start-line="249" selection-start-column="21" selection-end-line="249" selection-end-column="21" />
+          <folding>
+            <marker date="1564194371977" expanded="false" signature="6:194" ph="..." />
+            <marker date="1564194371977" expanded="true" signature="249:12089" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="256:843" ph="/// Repository base class for PostgreSQL databases. ... " />
+            <marker date="1564194371977" expanded="true" signature="941:12087" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="953:1069" ph="/// The name of the underlying PostgreSQL schema (default is &quot;public&quot;). ... " />
+            <marker date="1564194371977" expanded="true" signature="1118:1261" ph="/// The name of the underlying PostgreSQL database table where the repository entities are stored. ... " />
+            <marker date="1564194371977" expanded="true" signature="1363:1877" ph="/// Creates a new PostgreSQL repository using a specific connection string. ... " />
+            <marker date="1564194371977" expanded="true" signature="1990:2241" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="2251:2612" ph="/// Opens a &lt;see cref=&quot;IDbConnection&quot;/&gt; to the PostgreSQL database. &lt;para&gt; &lt;/para&gt; ... " />
+            <marker date="1564194371977" expanded="true" signature="2661:2830" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="2840:3142" ph="/// Gets an entity by its unique identifier. ... " />
+            <marker date="1564194371977" expanded="true" signature="3183:3460" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="3254:3450" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="3470:3772" ph="/// Gets an entity by its unique identifier. ... " />
+            <marker date="1564194371977" expanded="true" signature="3802:4132" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="3828:4122" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="3911:4108" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="4142:4290" ph="/// Gets all entities from the repository. ... " />
+            <marker date="1564194371977" expanded="true" signature="4342:4569" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="4413:4559" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="4579:5225" ph="/// Gets a single entity from the repo according to the specified predicate condition.&lt;para&gt; &lt;/para&gt; ... " />
+            <marker date="1564194371977" expanded="true" signature="5309:5577" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="5335:5477" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="5507:5567" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="5587:6212" ph="/// Finds all entities according to the specified predicate &lt;see cref=&quot;T:System.Linq.Expressions.Expression&quot; /&gt;.&lt; ... " />
+            <marker date="1564194371977" expanded="true" signature="6298:6579" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="6324:6469" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="6499:6569" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="6589:6939" ph="/// Adds the specified entity to the data repository. &lt;para&gt; &lt;/para&gt; ... " />
+            <marker date="1564194371977" expanded="true" signature="7000:7331" ph="/// Adds multiple entities at once.&lt;para&gt; &lt;/para&gt; ... " />
+            <marker date="1564194371977" expanded="true" signature="7412:7641" ph="/// Updates the specified entity. ... " />
+            <marker date="1564194371977" expanded="true" signature="7705:7934" ph="/// Removes the specified entity. ... " />
+            <marker date="1564194371977" expanded="true" signature="7984:8048" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="8058:8300" ph="/// Removes the specified entity. ... " />
+            <marker date="1564194371977" expanded="true" signature="8346:8858" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="8445:8649" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="8679:8739" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="8759:8820" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="8868:9171" ph="/// Removes all entities at once from the repository. ... " />
+            <marker date="1564194371977" expanded="true" signature="9215:9691" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="9314:9482" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="9512:9572" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="9592:9653" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="9701:10254" ph="/// Removes all entities that match the specified conditions (via the predicate &lt;see cref=&quot;T:System.Linq.Expressi ... " />
+            <marker date="1564194371977" expanded="true" signature="10336:10417" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="10427:10679" ph="/// Removes the range of entities from the repository. ... " />
+            <marker date="1564194371977" expanded="true" signature="10749:10835" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="10845:11110" ph="/// Removes the range of entities from the repository. ... " />
+            <marker date="1564194371977" expanded="true" signature="11175:12081" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="11274:11872" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="11610:11721" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="11902:11962" ph="{...}" />
+            <marker date="1564194371977" expanded="true" signature="11982:12043" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

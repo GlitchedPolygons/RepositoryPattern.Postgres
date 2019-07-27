@@ -12,10 +12,10 @@
       "output": {
         ".html": {
           "relative_path": "api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html",
-          "hash": "R2Lu/IGEzXU8F5J/N1WiJQ=="
+          "hash": "4a1a0kevHV+HzZBjrdPOew=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -27,7 +27,7 @@
           "hash": "WF+NrM18kDhWv7aH5VB7zQ=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -39,7 +39,7 @@
           "hash": "+atZcMn+Kq+4BjotOFX4Iw=="
         }
       },
-      "is_incremental": false,
+      "is_incremental": true,
       "version": ""
     },
     {
@@ -115,17 +115,17 @@
         "skipped_file_count": 0
       },
       "processors": {
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 2,
-          "skipped_file_count": 2
-        },
         "ConceptualDocumentProcessor": {
           "can_incremental": true,
           "incrementalPhase": "build",
           "total_file_count": 3,
-          "skipped_file_count": 2
+          "skipped_file_count": 3
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 1
         },
         "TocDocumentProcessor": {
           "can_incremental": false,
