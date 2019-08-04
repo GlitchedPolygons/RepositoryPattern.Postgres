@@ -17,11 +17,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\GlitchedPolygons.RepositoryPattern.Postgres.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\GlitchedPolygons.RepositoryPattern.Postgres.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\GlitchedPolygons.RepositoryPattern.Postgres.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\GlitchedPolygons.RepositoryPattern.Postgres.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
