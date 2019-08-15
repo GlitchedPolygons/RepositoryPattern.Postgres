@@ -13,8 +13,8 @@
     <PackageIconUrl>https://raw.githubusercontent.com/GlitchedPolygons/RepositoryPattern/4d8816f64c600fcfb30d1f93d4bd2354d7f6df40/icon.png</PackageIconUrl>
     <PackageTags>c# repository design pattern base interface declaration db database access abstraction repositories sql relational rdbms dbms postgres postgresql elephant</PackageTags>
     <RepositoryUrl>https://github.com/GlitchedPolygons/RepositoryPattern.Postgres</RepositoryUrl>
-    <PackageVersion>1.0.6</PackageVersion>
-    <PackageReleaseNotes/>
+    <PackageVersion>1.0.7</PackageVersion>
+    <PackageReleaseNotes />
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -28,7 +28,7 @@
   <ItemGroup>
     <PackageReference Include="Npgsql" Version="4.0.7" />
     <PackageReference Include="Dapper" Version="1.60.6" />
-    <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.5" />
+    <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.6" />
   </ItemGroup>
 
 </Project>
