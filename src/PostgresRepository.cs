@@ -31,7 +31,8 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         public string TableName { get; }
 
         private readonly string connectionString;
-
+        private readonly string getByIdSql, getAllSql, deleteByIdSql, deleteAllSql;
+        
         /// <summary>
         /// Creates a new PostgreSQL repository using a specific connection string.
         /// </summary>
@@ -43,11 +44,16 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         	this.SchemaName = string.IsNullOrEmpty(schemaName) ? "public" : schemaName;
             this.TableName = string.IsNullOrEmpty(tableName) ? typeof(T1).Name : tableName;
             this.connectionString = connectionString;
+
+            getAllSql = $"SELECT * FROM {SchemaName}.\"{TableName}\"";
+            getByIdSql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
+            deleteAllSql = $"DELETE FROM {SchemaName}.\"{TableName}\"";
+            deleteByIdSql = $"DELETE FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
         }
 
         /// <summary>
         /// Opens a <see cref="IDbConnection"/> to the PostgreSQL database. <para> </para>
-        /// Does not dispose automatically: make sure to wrap your usage into a <see langowrd="using"/> block.
+        /// Does not dispose automatically: make sure to wrap your usage into a <c>using</c> block.
         /// </summary>
         /// <returns>The opened <see cref="IDbConnection"/> (remember to dispose of it asap after you're done!).</returns>
         protected IDbConnection OpenConnection()
@@ -66,8 +72,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
-                return await sqlc.QueryFirstOrDefaultAsync<T1>(sql, new { Id = id });
+                return await sqlc.QueryFirstOrDefaultAsync<T1>(getByIdSql, new { Id = id });
             }
         }
 
@@ -82,8 +87,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             {
                 using (var sqlc = OpenConnection())
                 {
-                    string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
-                    return sqlc.QueryFirstOrDefault<T1>(sql, new { Id = id });
+                    return sqlc.QueryFirstOrDefault<T1>(getByIdSql, new { Id = id });
                 }
             }
         }
@@ -96,8 +100,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             using (var sqlc = OpenConnection())
             {
-                string sql = $"SELECT * FROM {SchemaName}.\"{TableName}\"";
-                return await sqlc.QueryAsync<T1>(sql);
+                return await sqlc.QueryAsync<T1>(getAllSql);
             }
         }
 
@@ -186,7 +189,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             try
             {
                 sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync($"DELETE FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id", new { Id = id }) > 0;
+                result = await sqlc.ExecuteAsync(deleteByIdSql, new { Id = id }) > 0;
             }
             catch (Exception)
             {
@@ -212,7 +215,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
             try
             {
                 sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync($"DELETE FROM {SchemaName}.\"{TableName}\"") > 0;
+                result = await sqlc.ExecuteAsync(deleteAllSql) > 0;
             }
             catch (Exception)
             {
