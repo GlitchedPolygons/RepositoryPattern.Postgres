@@ -41,7 +41,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <param name="tableName">Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</param>
         protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null)
         {
-        	this.SchemaName = string.IsNullOrEmpty(schemaName) ? "public" : schemaName;
+            this.SchemaName = string.IsNullOrEmpty(schemaName) ? "public" : schemaName;
             this.TableName = string.IsNullOrEmpty(tableName) ? typeof(T1).Name : tableName;
             this.connectionString = connectionString;
 
