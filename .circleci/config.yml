@@ -10,7 +10,7 @@ jobs:
           POSTGRES_PASSWORD: postgres_repository_tests
     steps:
       - checkout
-      - run: sudo apt install -y postgresql-client || true
+      - run: apt install -y postgresql-client || true
       - run:
           name: Disable .NET Telemetry
           command: echo 'export DOTNET_CLI_TELEMETRY_OPTOUT=1' >> $BASH_ENV && source $BASH_ENV
