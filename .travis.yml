@@ -1,0 +1,22 @@
+language: csharp
+sudo: false # faster builds
+dist: xenial
+services:
+  - postgresql
+notifications:
+  email: false
+env:
+  - DOTNET_CLI_TELEMETRY_OPTOUT=1
+before_script:
+  - psql -c 'create database postgres_repository_test_db;' -U postgres
+  - psql -c "create role postgres_repository_tests with login password 'postgres_repository_tests';"
+before_install:
+  - git lfs pull
+install:
+  - dotnet restore
+mono: none
+dotnet: 2.2
+script:
+  - dotnet restore
+  - cd tests/
+  - dotnet test
