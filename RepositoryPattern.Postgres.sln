@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.28803.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryPattern.Postgres", "src\RepositoryPattern.Postgres.csproj", "{8B06D23F-51E0-45FC-BC76-8D61474B3B82}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "tests\Tests.csproj", "{AF389BA5-0D3A-4425-BC47-C616392751E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{8B06D23F-51E0-45FC-BC76-8D61474B3B82}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B06D23F-51E0-45FC-BC76-8D61474B3B82}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B06D23F-51E0-45FC-BC76-8D61474B3B82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF389BA5-0D3A-4425-BC47-C616392751E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF389BA5-0D3A-4425-BC47-C616392751E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF389BA5-0D3A-4425-BC47-C616392751E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF389BA5-0D3A-4425-BC47-C616392751E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
