@@ -7,7 +7,7 @@ environment:
   PGPORT: 5432
   PGHOST: "127.0.0.1"
 install:
-- sh: sudo apt install -y postgresql postgresql-contrib
+- sh: sudo apt update && sudo apt install -y postgresql postgresql-contrib
 build_script:
 - sh: cd src && dotnet build -c Release && cd ..
 test_script:
