@@ -11,22 +11,19 @@ namespace Tests
     {
         #region
 
-        private const string DROP_TEST_TABLE_SQL = "        DROP TABLE IF EXISTS public.test_table;";
+        private const string DROP_TEST_TABLE_SQL = "DROP TABLE IF EXISTS public.test_table;";
 
         private const string CREATE_TEST_TABLE_SQL = @"
-                                                                    CREATE TABLE IF NOT EXISTS public.test_table
-                                                                    (
-                                                                        ""Id"" bigserial NOT NULL,
-                                                                        test_int bigint,
-                                                                        test_boolean boolean,
-                                                                        test_double double precision,
-                                                                        PRIMARY KEY (""Id"")
-                                                                    )
-                                                                    WITH (
-                                                                        OIDS = FALSE
-                                                                    );
-        
-                                                                    ALTER TABLE public.test_table OWNER to postgres;";
+
+CREATE TABLE IF NOT EXISTS public.test_table
+(
+    ""Id"" bigserial NOT NULL,
+    test_int bigint,
+    test_boolean boolean,
+    test_double double precision,
+    PRIMARY KEY (""Id"")
+);
+";
 
         private class TestClass : IEntity<long>
         {
