@@ -12,6 +12,8 @@ environment:
   PGHOST: "localhost"
 services:
   - postgresql
+init:
+  - SET PATH=%POSTGRES_PATH%\bin;%PATH%
 build_script:
 - createdb postgres_repository_test_db
 - cd src && dotnet build -c Release && cd ..
