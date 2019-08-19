@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Dapper;
 using GlitchedPolygons.RepositoryPattern.Postgres;
 
@@ -42,6 +43,7 @@ namespace Tests
             using (var t = dbcon.BeginTransaction())
             {
                 success = await dbcon.ExecuteAsync(insertionSql, entities, t) > 0;
+                
                 if (success)
                 {
                     t.Commit();
@@ -51,9 +53,21 @@ namespace Tests
             return success;
         }
 
-        public override Task<bool> Update(TestClass entity)
+        public override async Task<bool> Update(TestClass entity)
         {
-            throw new NotImplementedException();
+            var sql = new StringBuilder(256)
+                .Append($"UPDATE \"{TableName}\" SET ")
+                .Append("\"TestLong\" = @TestLong, ")
+                .Append("\"TestBool\" = @TestBool, ")
+                .Append("\"TestDouble\" = @TestDouble, ")
+                .Append("\"TestString\" = @TestString ")
+                .Append("WHERE \"Id\" = @Id")
+                .ToString();
+
+            using (var dbcon = OpenConnection())
+            {
+                return await dbcon.ExecuteAsync(sql, entity) > 0;
+            }
         }
     }
 }

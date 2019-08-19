@@ -192,8 +192,7 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
                 TestString = "2"
             };
 
-            await repository.Add(t1);
-            await repository.Add(t2);
+            await repository.AddRange(new[] { t1, t2 });
 
             Assert.True(await repository.Remove(2));
             Assert.Null(await repository.Get(2));
@@ -229,8 +228,7 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
                 TestString = "2"
             };
 
-            await repository.Add(t1);
-            await repository.Add(t2);
+            await repository.AddRange(new[] { t1, t2 });
 
             Assert.True(await repository.RemoveAll());
             Assert.Null(await repository.Get(1));
@@ -287,6 +285,34 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             Assert.Equal("2", _t2.TestString);
             Assert.Equal(2, _t2.TestLong);
             Assert.True(AlmostEqual(_t2.TestDouble, 2.0D));
+        }
+
+        [Fact]
+        public async Task UpdateRow_NewDataShouldBeCorrect()
+        {
+            var t1 = new TestClass
+            {
+                TestBool = false,
+                TestLong = 1,
+                TestDouble = 1.0D,
+                TestString = "1"
+            };
+
+            await repository.Add(t1);
+
+            t1.Id = 1; // In practice this id would need to be retrieved after insertion.
+            t1.TestBool = true;
+            t1.TestLong = 33554432;
+            t1.TestDouble = 65536.0D;
+            t1.TestString = "updated";
+            
+            Assert.True(await repository.Update(t1));
+
+            t1 = await repository.Get(t1.Id);
+            Assert.True(t1.TestBool);
+            Assert.Equal("updated", t1.TestString);
+            Assert.Equal(33554432, t1.TestLong);
+            Assert.True(AlmostEqual(t1.TestDouble, 65536.0D));
         }
     }
 }
