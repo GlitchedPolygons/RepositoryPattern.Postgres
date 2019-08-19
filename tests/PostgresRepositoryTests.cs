@@ -10,7 +10,7 @@ using Xunit;
 
 namespace Tests
 {
-    public class PostgresRepositoryTests
+    public class PostgresRepositoryTests : IDisposable
     {
         #region
 
