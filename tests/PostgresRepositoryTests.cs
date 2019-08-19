@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
 using GlitchedPolygons.RepositoryPattern;
@@ -102,12 +103,72 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             });
 
             TestClass test = await repository.Get(1);
-            
+
             Assert.NotNull(test);
             Assert.True(test.TestBool);
             Assert.Equal(-133742069, test.TestLong);
             Assert.True(AlmostEqual(test.TestDouble, -666.666D));
             Assert.Equal("SeeS!!!", test.TestString);
+        }
+
+        [Fact]
+        public void GetRowSync_ShouldRetrieveCorrectData()
+        {
+            repository.Add(new TestClass
+            {
+                TestBool = true,
+                TestLong = -133742069,
+                TestDouble = -666.666D,
+                TestString = "SeeS!!!"
+            }).GetAwaiter().GetResult();
+
+            TestClass test = repository[1];
+
+            Assert.NotNull(test);
+            Assert.True(test.TestBool);
+            Assert.Equal(-133742069, test.TestLong);
+            Assert.True(AlmostEqual(test.TestDouble, -666.666D));
+            Assert.Equal("SeeS!!!", test.TestString);
+        }
+
+        [Fact]
+        public async Task GetAllRows_ShouldRetrieveCorrectData()
+        {
+            await repository.Add(new TestClass
+            {
+                TestBool = false,
+                TestLong = -1,
+                TestDouble = -1.0D,
+                TestString = "-1"
+            });
+
+            await repository.Add(new TestClass
+            {
+                TestBool = true,
+                TestLong = -2,
+                TestDouble = -2.0D,
+                TestString = "-2"
+            });
+
+            await repository.Add(new TestClass
+            {
+                TestBool = false,
+                TestLong = -3,
+                TestDouble = -3.0D,
+                TestString = "-3"
+            });
+
+            TestClass[] test = (await repository.GetAll()).ToArray();
+
+            Assert.NotNull(test);
+            Assert.NotEmpty(test);
+            Assert.Equal(3, test.Length);
+
+            for (int i = 0; i < test.Length; i++)
+            {
+                var t = test[i];
+                Assert.True(t.TestBool == (t.Id % 2 == 0));
+            }
         }
     }
 }
