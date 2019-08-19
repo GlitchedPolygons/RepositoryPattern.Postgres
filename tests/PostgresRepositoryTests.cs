@@ -266,21 +266,31 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
                 TestDouble = 2.0D,
                 TestString = "2"
             };
+            
+            var t3 = new TestClass
+            {
+                TestBool = true,
+                TestLong = 3,
+                TestDouble = 3.0D,
+                TestString = "3"
+            };
 
-            await repository.AddRange(new[] { t1, t2 });
+            await repository.AddRange(new[] { t1, t2, t3 });
 
             Assert.True(await repository.RemoveRange(new long[] { 1, 2 }));
             Assert.Null(await repository.Get(1));
             Assert.Null(await repository.Get(2));
-            Assert.Equal(0, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
+            Assert.NotNull(await repository.Get(3));
+            Assert.Equal(1, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
 
             await repository.Add(t2);
 
             Assert.Null(await repository.Get(1));
             Assert.Null(await repository.Get(2));
             Assert.NotNull(await repository.Get(3));
+            Assert.NotNull(await repository.Get(4));
 
-            var _t2 = await repository.Get(3);
+            var _t2 = await repository.Get(4);
             Assert.True(_t2.TestBool);
             Assert.Equal("2", _t2.TestString);
             Assert.Equal(2, _t2.TestLong);
