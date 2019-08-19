@@ -61,10 +61,15 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             return npgsqlConnection;
         }
 
+        private static bool AlmostEqual(double n, double m)
+        {
+            return Math.Abs(n - m) < 0.001D;
+        }
+
         [Fact]
         public async Task AddRow_InsertedDataShouldBeCorrect()
         {
-            var test = new TestClass
+            var add = new TestClass
             {
                 // Id is auto-incremented
                 TestBool = true,
@@ -72,9 +77,37 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
                 TestDouble = 420.69D,
                 TestString = "Sauce???"
             };
-            Assert.True(await repository.Add(test));
-            int c = dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\"");
-            Assert.Equal(1, c);
+
+            Assert.True(await repository.Add(add));
+            Assert.Equal(1, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
+
+            TestClass get = dbConnection.QueryFirstOrDefault<TestClass>("SELECT * FROM public.\"TestClass\"");
+
+            Assert.NotNull(get);
+            Assert.True(get.TestBool);
+            Assert.Equal(1337, get.TestLong);
+            Assert.True(Math.Abs(get.TestDouble - 420.69D) < 0.01D);
+            Assert.Equal("Sauce???", get.TestString);
+        }
+
+        [Fact]
+        public async Task GetRow_ShouldRetrieveCorrectData()
+        {
+            await repository.Add(new TestClass
+            {
+                TestBool = true,
+                TestLong = -133742069,
+                TestDouble = -666.666D,
+                TestString = "SeeS!!!"
+            });
+
+            TestClass test = await repository.Get(1);
+            
+            Assert.NotNull(test);
+            Assert.True(test.TestBool);
+            Assert.Equal(-133742069, test.TestLong);
+            Assert.True(AlmostEqual(test.TestDouble, -666.666D));
+            Assert.Equal("SeeS!!!", test.TestString);
         }
     }
 }
