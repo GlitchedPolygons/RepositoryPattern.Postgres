@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 using Dapper;
 using GlitchedPolygons.RepositoryPattern.Postgres;
 
@@ -12,7 +13,7 @@ namespace Tests
 
         public TestClassRepo(string connectionString) : base(connectionString)
         {
-            insertionSql = $"INSERT INTO \"{TableName}\" (\"TestLong\", \"TestBool\", \"TestDouble\", \"TestString\") VALUES (@TestLong, @TestBool, @TestDouble, @TestString)";
+            insertionSql = $@"INSERT INTO ""{TableName}"" (""TestLong"", ""TestBool"", ""TestDouble"", ""TestString"") VALUES (@TestLong, @TestBool, @TestDouble, @TestString)";
         }
 
         public override async Task<bool> Add(TestClass entity)
@@ -33,9 +34,21 @@ namespace Tests
             return success;
         }
 
-        public override Task<bool> AddRange(IEnumerable<TestClass> entities)
+        public override async Task<bool> AddRange(IEnumerable<TestClass> entities)
         {
-            throw new NotImplementedException();
+            bool success = false;
+
+            using (var dbcon = OpenConnection())
+            using (var t = dbcon.BeginTransaction())
+            {
+                success = await dbcon.ExecuteAsync(insertionSql, entities, t) > 0;
+                if (success)
+                {
+                    t.Commit();
+                }
+            }
+
+            return success;
         }
 
         public override Task<bool> Update(TestClass entity)

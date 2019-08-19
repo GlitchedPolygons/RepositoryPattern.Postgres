@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Dapper;
-using GlitchedPolygons.RepositoryPattern;
-using GlitchedPolygons.RepositoryPattern.Postgres;
-using Npgsql;
+
 using Xunit;
+using Dapper;
+using Npgsql;
+using GlitchedPolygons.RepositoryPattern;
 
 namespace Tests
 {
@@ -210,7 +209,7 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             Assert.Equal(2, _t2.TestLong);
             Assert.True(AlmostEqual(_t2.TestDouble, 2.0D));
         }
-        
+
         [Fact]
         public async Task RemoveAllRows_RowsShouldNotExistAnymore_ButAutoIncrementedIdResumesFromLastTailId()
         {
@@ -234,6 +233,45 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             await repository.Add(t2);
 
             Assert.True(await repository.RemoveAll());
+            Assert.Null(await repository.Get(1));
+            Assert.Null(await repository.Get(2));
+            Assert.Equal(0, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
+
+            await repository.Add(t2);
+
+            Assert.Null(await repository.Get(1));
+            Assert.Null(await repository.Get(2));
+            Assert.NotNull(await repository.Get(3));
+
+            var _t2 = await repository.Get(3);
+            Assert.True(_t2.TestBool);
+            Assert.Equal(2, _t2.TestLong);
+            Assert.Equal("2", _t2.TestString);
+            Assert.True(AlmostEqual(_t2.TestDouble, 2.0D));
+        }
+
+        [Fact]
+        public async Task RemoveRangeOfRows_RowsShouldNotExistAnymore_ButAutoIncrementedIdResumesFromLastTailId()
+        {
+            var t1 = new TestClass
+            {
+                TestBool = false,
+                TestLong = 1,
+                TestDouble = 1.0D,
+                TestString = "1"
+            };
+
+            var t2 = new TestClass
+            {
+                TestBool = true,
+                TestLong = 2,
+                TestDouble = 2.0D,
+                TestString = "2"
+            };
+
+            await repository.AddRange(new[] { t1, t2 });
+
+            Assert.True(await repository.RemoveRange(new long[] { 1, 2 }));
             Assert.Null(await repository.Get(1));
             Assert.Null(await repository.Get(2));
             Assert.Equal(0, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
