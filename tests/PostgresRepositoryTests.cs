@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 using Dapper;
 using GlitchedPolygons.RepositoryPattern;
+using GlitchedPolygons.RepositoryPattern.Postgres;
 using Npgsql;
 using Xunit;
 
@@ -11,27 +14,20 @@ namespace Tests
     {
         #region
 
-        private const string DROP_TEST_TABLE_SQL = "DROP TABLE IF EXISTS public.test_table;";
+        private const string DROP_TEST_TABLE_SQL = "DROP TABLE IF EXISTS public.\"TestClass\";";
 
         private const string CREATE_TEST_TABLE_SQL = @"
 
-CREATE TABLE IF NOT EXISTS public.test_table
+CREATE TABLE IF NOT EXISTS public.""TestClass""
 (
     ""Id"" bigserial NOT NULL,
-    test_int bigint,
-    test_boolean boolean,
-    test_double double precision,
+    ""TestLong"" bigint,
+    ""TestBool"" boolean,
+    ""TestDouble"" double precision,
+    ""TestString"" text,
     PRIMARY KEY (""Id"")
 );
 ";
-
-        private class TestClass : IEntity<long>
-        {
-            public long Id { get; set; }
-            public long test_int { get; set; }
-            public bool test_boolean { get; set; }
-            public double test_double { get; set; }
-        }
 
         #endregion
 
@@ -40,9 +36,11 @@ CREATE TABLE IF NOT EXISTS public.test_table
 
         public PostgresRepositoryTests()
         {
-            dbConnection = OpenConnection($"Server=127.0.0.1;Port=5432;User Id=postgres_repository_tests;Password=postgres_repository_tests;Database=postgres_repository_test_db");
+            var connectionString = $"Server=127.0.0.1;Port=5432;User Id=postgres_repository_tests;Password=postgres_repository_tests;Database=postgres_repository_test_db";
+            dbConnection = OpenConnection(connectionString);
             dbConnection.Execute(DROP_TEST_TABLE_SQL);
             dbConnection.Execute(CREATE_TEST_TABLE_SQL);
+            repository = new TestClassRepo(connectionString);
         }
 
         ~PostgresRepositoryTests()
@@ -64,10 +62,19 @@ CREATE TABLE IF NOT EXISTS public.test_table
         }
 
         [Fact]
-        public void Test1()
+        public async Task AddRow_InsertedDataShouldBeCorrect()
         {
-            int c = dbConnection.QuerySingleOrDefault<int>("SELECT * FROM test_table COUNT");
-            Assert.Equal(0, c);
+            var test = new TestClass
+            {
+                // Id is auto-incremented
+                TestBool = true,
+                TestLong = 1337,
+                TestDouble = 420.69D,
+                TestString = "Sauce???"
+            };
+            Assert.True(await repository.Add(test));
+            int c = dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\"");
+            Assert.Equal(1, c);
         }
     }
 }
