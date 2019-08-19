@@ -168,7 +168,87 @@ CREATE TABLE IF NOT EXISTS public.""TestClass""
             {
                 var t = test[i];
                 Assert.True(t.TestBool == (t.Id % 2 == 0));
+                Assert.Equal(t.TestLong, -(i + 1));
+                Assert.Equal(t.TestString, (-(i + 1)).ToString());
+                Assert.True(AlmostEqual(t.TestDouble, -(i + 1)));
             }
+        }
+
+        [Fact]
+        public async Task RemoveRowById_RowShouldNotExistAnymore_NextRowHasCorrectlyAutoIncrementedId()
+        {
+            var t1 = new TestClass
+            {
+                TestBool = false,
+                TestLong = 1,
+                TestDouble = 1.0D,
+                TestString = "1"
+            };
+
+            var t2 = new TestClass
+            {
+                TestBool = true,
+                TestLong = 2,
+                TestDouble = 2.0D,
+                TestString = "2"
+            };
+
+            await repository.Add(t1);
+            await repository.Add(t2);
+
+            Assert.True(await repository.Remove(2));
+            Assert.Null(await repository.Get(2));
+
+            await repository.Add(t2);
+
+            Assert.Null(await repository.Get(2));
+            Assert.NotNull(await repository.Get(3));
+
+            var _t2 = await repository.Get(3);
+            Assert.True(_t2.TestBool);
+            Assert.Equal("2", _t2.TestString);
+            Assert.Equal(2, _t2.TestLong);
+            Assert.True(AlmostEqual(_t2.TestDouble, 2.0D));
+        }
+        
+        [Fact]
+        public async Task RemoveAllRows_RowsShouldNotExistAnymore_ButAutoIncrementedIdResumesFromLastTailId()
+        {
+            var t1 = new TestClass
+            {
+                TestBool = false,
+                TestLong = 1,
+                TestDouble = 1.0D,
+                TestString = "1"
+            };
+
+            var t2 = new TestClass
+            {
+                TestBool = true,
+                TestLong = 2,
+                TestDouble = 2.0D,
+                TestString = "2"
+            };
+
+            await repository.Add(t1);
+            await repository.Add(t2);
+
+            Assert.True(await repository.RemoveAll());
+            Assert.Null(await repository.Get(1));
+            Assert.Null(await repository.Get(2));
+            Assert.Equal(0, dbConnection.QuerySingleOrDefault<int>($"SELECT COUNT(*) FROM \"{nameof(TestClass)}\""));
+
+            await repository.Add(t2);
+
+            Assert.Null(await repository.Get(1));
+            Assert.Null(await repository.Get(2));
+            Assert.NotNull(await repository.Get(3));
+
+            var _t2 = await repository.Get(3);
+            Assert.True(_t2.TestBool);
+            Assert.Equal("2", _t2.TestString);
+            Assert.Equal(2, _t2.TestLong);
+            Assert.True(AlmostEqual(_t2.TestDouble, 2.0D));
         }
     }
 }
