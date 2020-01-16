@@ -10,7 +10,6 @@
     <Authors>Glitched Polygons</Authors>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/GlitchedPolygons/RepositoryPattern</PackageProjectUrl>
-    <PackageIconUrl>https://raw.githubusercontent.com/GlitchedPolygons/RepositoryPattern/4d8816f64c600fcfb30d1f93d4bd2354d7f6df40/icon.png</PackageIconUrl>
     <PackageTags>c# repository design pattern base interface declaration db database access abstraction repositories sql relational rdbms dbms postgres postgresql elephant</PackageTags>
     <RepositoryUrl>https://github.com/GlitchedPolygons/RepositoryPattern.Postgres</RepositoryUrl>
     <PackageVersion>1.0.7</PackageVersion>
@@ -30,5 +29,14 @@
     <PackageReference Include="Dapper" Version="1.60.6" />
     <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.6" />
   </ItemGroup>
+
+
+<PropertyGroup>
+  <PackageIcon>icon.png</PackageIcon>
+</PropertyGroup>
+
+<ItemGroup>
+  <None Include="icon.png" Pack="true" PackagePath="\"/>
+</ItemGroup>
 
 </Project>
