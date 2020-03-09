@@ -70,9 +70,9 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>The first found <see cref="T:GlitchedPolygons.RepositoryPattern.IEntity`1" />; <c>null</c> if nothing was found.</returns>
         public async Task<T1> Get(T2 id)
         {
-            using (var sqlc = OpenConnection())
+            using (var dbcon = OpenConnection())
             {
-                return await sqlc.QueryFirstOrDefaultAsync<T1>(getByIdSql, new { Id = id });
+                return await dbcon.QueryFirstOrDefaultAsync<T1>(getByIdSql, new { Id = id }).ConfigureAwait(false);
             }
         }
 
@@ -85,9 +85,9 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             get
             {
-                using (var sqlc = OpenConnection())
+                using (var dbcon = OpenConnection())
                 {
-                    return sqlc.QueryFirstOrDefault<T1>(getByIdSql, new { Id = id });
+                    return dbcon.QueryFirstOrDefault<T1>(getByIdSql, new { Id = id });
                 }
             }
         }
@@ -98,9 +98,9 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>All entities inside the repo.</returns>
         public async Task<IEnumerable<T1>> GetAll()
         {
-            using (var sqlc = OpenConnection())
+            using (var dbcon = OpenConnection())
             {
-                return await sqlc.QueryAsync<T1>(getAllSql);
+                return await dbcon.QueryAsync<T1>(getAllSql).ConfigureAwait(false);
             }
         }
 
@@ -115,10 +115,10 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             try
             {
-                T1 result = (await GetAll()).SingleOrDefault(predicate.Compile());
+                T1 result = (await GetAll().ConfigureAwait(false)).SingleOrDefault(predicate.Compile());
                 return result;
             }
-            catch (Exception)
+            catch
             {
                 return default;
             }
@@ -134,10 +134,10 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         {
             try
             {
-                IEnumerable<T1> result = (await GetAll()).Where(predicate.Compile());
+                IEnumerable<T1> result = (await GetAll().ConfigureAwait(false)).Where(predicate.Compile());
                 return result;
             }
-            catch (Exception)
+            catch
             {
                 return Array.Empty<T1>();
             }
@@ -173,7 +173,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether the entity could be removed successfully or not.</returns>
         public async Task<bool> Remove(T1 entity)
         {
-            return await Remove(entity.Id);
+            return await Remove(entity.Id).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -183,24 +183,24 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether the entity could be removed successfully or not.</returns>
         public async Task<bool> Remove(T2 id)
         {
-            bool result = false;
-            IDbConnection sqlc = null;
+            bool success = false;
+            IDbConnection dbcon = null;
 
             try
             {
-                sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync(deleteByIdSql, new { Id = id }) > 0;
+                dbcon = OpenConnection();
+                success = await dbcon.ExecuteAsync(deleteByIdSql, new { Id = id }).ConfigureAwait(false) > 0;
             }
-            catch (Exception)
+            catch
             {
-                result = false;
+                success = false;
             }
             finally
             {
-                sqlc?.Dispose();
+                dbcon?.Dispose();
             }
 
-            return result;
+            return success;
         }
 
         /// <summary>
@@ -209,24 +209,24 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether the entities were removed successfully or not. If the repository was already empty, <c>false</c> is returned (because nothing was actually &lt;&lt;removed&gt;&gt; ).</returns>
         public async Task<bool> RemoveAll()
         {
-            bool result = false;
-            IDbConnection sqlc = null;
+            bool success = false;
+            IDbConnection dbcon = null;
 
             try
             {
-                sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync(deleteAllSql) > 0;
+                dbcon = OpenConnection();
+                success = await dbcon.ExecuteAsync(deleteAllSql).ConfigureAwait(false) > 0;
             }
-            catch (Exception)
+            catch
             {
-                result = false;
+                success = false;
             }
             finally
             {
-                sqlc?.Dispose();
+                dbcon?.Dispose();
             }
 
-            return result;
+            return success;
         }
 
         /// <summary>
@@ -237,7 +237,8 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether the entities were removed successfully or not.</returns>
         public async Task<bool> RemoveRange(Expression<Func<T1, bool>> predicate)
         {
-            return await RemoveRange(await Find(predicate));
+            IEnumerable<T1> entities = await Find(predicate).ConfigureAwait(false);
+            return await RemoveRange(entities).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -247,7 +248,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether all entities were removed successfully or not.</returns>
         public async Task<bool> RemoveRange(IEnumerable<T1> entities)
         {
-            return await RemoveRange(entities.Select(e => e.Id));
+            return await RemoveRange(entities.Select(e => e.Id)).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -257,8 +258,8 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
         /// <returns>Whether all entities were removed successfully or not.</returns>
         public async Task<bool> RemoveRange(IEnumerable<T2> ids)
         {
-            bool result = false;
-            IDbConnection sqlc = null;
+            bool success = false;
+            IDbConnection dbcon = null;
 
             try
             {
@@ -274,19 +275,19 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
                     sql.Append('\'').Append(id).Append('\'').Append(", ");
                 }
 
-                sqlc = OpenConnection();
-                result = await sqlc.ExecuteAsync(sql.ToString().TrimEnd(',', ' ') + ");") > 0;
+                dbcon = OpenConnection();
+                success = await dbcon.ExecuteAsync(sql.ToString().TrimEnd(',', ' ') + ");").ConfigureAwait(false) > 0;
             }
-            catch (Exception)
+            catch
             {
-                result = false;
+                success = false;
             }
             finally
             {
-                sqlc?.Dispose();
+                dbcon?.Dispose();
             }
 
-            return result;
+            return success;
         }
     }
 }
