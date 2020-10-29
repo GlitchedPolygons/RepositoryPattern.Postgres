@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "C:/git/glitched-polygons/nuget/RepositoryPattern.Postgres/docs/docfx_project",
+  "source_base_path": "D:/git/gp/github.com/RepositoryPattern.Postgres/docs/docfx_project",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12,7 +12,7 @@
       "output": {
         ".html": {
           "relative_path": "api/GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository-2.html",
-          "hash": "X7rejqudn+Mt7NFGsbTVRA=="
+          "hash": "2RVJs5XxfzR1XgB6UjhXaA=="
         }
       },
       "is_incremental": false,
@@ -39,7 +39,7 @@
           "hash": "+atZcMn+Kq+4BjotOFX4Iw=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -63,7 +63,7 @@
           "hash": "hU7cSfnKg+S3ADmAAAhIrg=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -90,7 +90,7 @@
           "hash": "JtBNSo6J5DQkPWNF0PJN2Q=="
         }
       },
-      "is_incremental": true,
+      "is_incremental": false,
       "version": ""
     },
     {
@@ -109,37 +109,39 @@
   "incremental_info": [
     {
       "status": {
-        "can_incremental": true,
+        "can_incremental": false,
+        "details": "Cannot build incrementally because last build info is missing.",
         "incrementalPhase": "build",
         "total_file_count": 0,
-        "skipped_file_count": 0
+        "skipped_file_count": 0,
+        "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
-        "ConceptualDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 3,
-          "skipped_file_count": 3
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": true,
-          "incrementalPhase": "build",
-          "total_file_count": 2,
-          "skipped_file_count": 1
-        },
         "TocDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
           "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 2,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 0
         }
       }
     },
     {
       "status": {
-        "can_incremental": true,
-        "details": "Can support incremental post processing.",
+        "can_incremental": false,
+        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

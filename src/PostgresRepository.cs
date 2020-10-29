@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-
 using Dapper;
 using Npgsql;
 
@@ -20,35 +19,37 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
     /// <seealso cref="IRepository{T1, T2}" />
     public abstract class PostgresRepository<T1, T2> : IRepository<T1, T2> where T1 : IEntity<T2>
     {
-    	/// <summary>
+        /// <summary>
         /// The name of the underlying PostgreSQL schema (default is "public").
         /// </summary>
-    	public string SchemaName { get; }
+        public string SchemaName { get; }
 
         /// <summary>
         /// The name of the underlying PostgreSQL database table where the repository entities are stored.
         /// </summary>
         public string TableName { get; }
 
-        private readonly string connectionString;
+        private readonly string connectionString, idColumnName;
         private readonly string getByIdSql, getAllSql, deleteByIdSql, deleteAllSql;
-        
+
         /// <summary>
         /// Creates a new PostgreSQL repository using a specific connection string.
         /// </summary>
         /// <param name="connectionString">The postgres db connection string. Ensure that this is valid!</param>
         /// <param name="schemaName">Optional PostgreSQL schema. If left out, the default schema ("public") is used.</param>
         /// <param name="tableName">Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</param>
-        protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null)
+        /// <param name="idColumnName">Name of the primary key's column (usually, this will be the default value of <c>id</c>, but you can customize it if needed).</param>
+        protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null, string idColumnName = "id")
         {
             this.SchemaName = string.IsNullOrEmpty(schemaName) ? "public" : schemaName;
             this.TableName = string.IsNullOrEmpty(tableName) ? typeof(T1).Name : tableName;
             this.connectionString = connectionString;
+            this.idColumnName = idColumnName;
 
             getAllSql = $"SELECT * FROM {SchemaName}.\"{TableName}\"";
-            getByIdSql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
+            getByIdSql = $"SELECT * FROM {SchemaName}.\"{TableName}\" WHERE \"{idColumnName}\" = @Id";
             deleteAllSql = $"DELETE FROM {SchemaName}.\"{TableName}\"";
-            deleteByIdSql = $"DELETE FROM {SchemaName}.\"{TableName}\" WHERE \"Id\" = @Id";
+            deleteByIdSql = $"DELETE FROM {SchemaName}.\"{TableName}\" WHERE \"{idColumnName}\" = @Id";
         }
 
         /// <summary>
@@ -268,7 +269,7 @@ namespace GlitchedPolygons.RepositoryPattern.Postgres
                     .Append('\"')
                     .Append(TableName)
                     .Append('\"')
-                    .Append(" WHERE \"Id\" IN (");
+                    .Append(" WHERE \"").Append(idColumnName).Append("\" IN (");
 
                 foreach (T2 id in ids)
                 {

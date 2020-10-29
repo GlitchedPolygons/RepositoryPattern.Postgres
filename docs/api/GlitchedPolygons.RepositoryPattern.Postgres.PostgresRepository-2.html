@@ -141,19 +141,19 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
   </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.%23ctor(System.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_System_String_System_String_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.%23ctor(System.String%2CSystem.String%2CSystem.String%2CSystem.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L42">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor*"></a>
-  <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_System_String_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String,System.String)">PostgresRepository(String, String, String)</h4>
+  <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2__ctor_System_String_System_String_System_String_System_String_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.#ctor(System.String,System.String,System.String,System.String)">PostgresRepository(String, String, String, String)</h4>
   <div class="markdown level1 summary"><p>Creates a new PostgreSQL repository using a specific connection string.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null)</code></pre>
+    <pre><code class="lang-csharp hljs">protected PostgresRepository(string connectionString, string schemaName = null, string tableName = null, string idColumnName = &quot;id&quot;)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -183,6 +183,12 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
         <td><p>Optional custom name for the underlying PostgreSQL database table. If left out, the entity's type name is used.</p>
 </td>
       </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">idColumnName</span></td>
+        <td><p>Name of the primary key's column (usually, this will be the default value of <code>id</code>, but you can customize it if needed).</p>
+</td>
+      </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
@@ -192,7 +198,7 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Item__1_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Item(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L84">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L85">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Item_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Item*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Item__1_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Item(`1)">Item[T2]</h4>
@@ -242,7 +248,7 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SchemaName.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.SchemaName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L26">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L25">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SchemaName_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SchemaName" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SchemaName">SchemaName</h4>
@@ -273,7 +279,7 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_TableName.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.TableName%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L31">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L30">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_TableName_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.TableName*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_TableName" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.TableName">TableName</h4>
@@ -306,7 +312,7 @@ Implements the <span class="xref">GlitchedPolygons.RepositoryPattern.IRepository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Add__0_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Add(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L152">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L153">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Add_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Add*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Add__0_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Add(`0)">Add(T1)</h4>
@@ -357,7 +363,7 @@ You need to ENSURE the uniqueness of the addendum <span class="xref">GlitchedPol
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_AddRange_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.AddRange(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L160">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L161">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_AddRange_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.AddRange*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_AddRange_System_Collections_Generic_IEnumerable__0__" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.AddRange(System.Collections.Generic.IEnumerable{`0})">AddRange(IEnumerable&lt;T1&gt;)</h4>
@@ -408,7 +414,7 @@ You need to ENSURE the uniqueness of each added <span class="xref">GlitchedPolyg
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Find_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Find(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2CSystem.Boolean%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L133">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L134">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Find_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Find*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Find_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Find(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">Find(Expression&lt;Func&lt;T1, Boolean&gt;&gt;)</h4>
@@ -459,7 +465,7 @@ WARNING: Can be very slow! For specialized queries, just create a new repository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Get__1_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Get(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L71">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L72">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Get_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Get*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Get__1_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Get(`1)">Get(T2)</h4>
@@ -509,7 +515,7 @@ WARNING: Can be very slow! For specialized queries, just create a new repository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_GetAll.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.GetAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L99">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L100">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_GetAll_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.GetAll*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_GetAll" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.GetAll">GetAll()</h4>
@@ -541,7 +547,7 @@ WARNING: Can be very slow! For specialized queries, just create a new repository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_OpenConnection.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.OpenConnection%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L59">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L60">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_OpenConnection_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.OpenConnection*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_OpenConnection" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.OpenConnection">OpenConnection()</h4>
@@ -574,7 +580,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove__0_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Remove(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L174">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L175">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove__0_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove(`0)">Remove(T1)</h4>
@@ -624,7 +630,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove__1_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Remove(%601)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L184">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L185">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Remove__1_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Remove(`1)">Remove(T2)</h4>
@@ -674,7 +680,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveAll.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.RemoveAll%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L210">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L211">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveAll_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveAll*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveAll" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveAll">RemoveAll()</h4>
@@ -706,7 +712,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Collections_Generic_IEnumerable__0__.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.RemoveRange(System.Collections.Generic.IEnumerable%7B%600%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L248">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L250">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Collections_Generic_IEnumerable__0__" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Collections.Generic.IEnumerable{`0})">RemoveRange(IEnumerable&lt;T1&gt;)</h4>
@@ -756,7 +762,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Collections_Generic_IEnumerable__1__.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.RemoveRange(System.Collections.Generic.IEnumerable%7B%601%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L258">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L260">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Collections_Generic_IEnumerable__1__" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Collections.Generic.IEnumerable{`1})">RemoveRange(IEnumerable&lt;T2&gt;)</h4>
@@ -806,7 +812,7 @@ Does not dispose automatically: make sure to wrap your usage into a <code>using<
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.RemoveRange(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2CSystem.Boolean%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L238">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L239">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_RemoveRange_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.RemoveRange(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">RemoveRange(Expression&lt;Func&lt;T1, Boolean&gt;&gt;)</h4>
@@ -857,7 +863,7 @@ WARNING: Can be slow. If you know the entities' id, please use the other RemoveR
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SingleOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.SingleOrDefault(System.Linq.Expressions.Expression%7BSystem.Func%7B%600%2CSystem.Boolean%7D%7D)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L114">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L115">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SingleOrDefault_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SingleOrDefault*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_SingleOrDefault_System_Linq_Expressions_Expression_System_Func__0_System_Boolean___" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.SingleOrDefault(System.Linq.Expressions.Expression{System.Func{`0,System.Boolean}})">SingleOrDefault(Expression&lt;Func&lt;T1, Boolean&gt;&gt;)</h4>
@@ -909,7 +915,7 @@ WARNING: Can be very slow! For specialized queries, just create a new repository
     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Update__0_.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602.Update(%600)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L167">View Source</a>
+    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L168">View Source</a>
   </span>
   <a id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Update_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Update*"></a>
   <h4 id="GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2_Update__0_" data-uid="GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository`2.Update(`0)">Update(T1)</h4>
@@ -973,7 +979,7 @@ WARNING: Can be very slow! For specialized queries, just create a new repository
                     <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/new/master/apiSpec/new?filename=GlitchedPolygons_RepositoryPattern_Postgres_PostgresRepository_2.md&amp;value=---%0Auid%3A%20GlitchedPolygons.RepositoryPattern.Postgres.PostgresRepository%602%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L21" class="contribution-link">View Source</a>
+                    <a href="https://github.com/GlitchedPolygons/RepositoryPattern.Postgres/blob/master/src/PostgresRepository.cs/#L20" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>
