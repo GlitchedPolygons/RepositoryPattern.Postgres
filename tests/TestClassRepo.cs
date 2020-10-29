@@ -10,7 +10,7 @@ namespace Tests
     {
         private readonly string insertionSql;
 
-        public TestClassRepo(string connectionString) : base(connectionString)
+        public TestClassRepo(string connectionString) : base(connectionString, idColumnName: "Id")
         {
             insertionSql = $@"INSERT INTO ""{TableName}"" (""TestLong"", ""TestBool"", ""TestDouble"", ""TestString"") VALUES (@TestLong, @TestBool, @TestDouble, @TestString)";
         }
