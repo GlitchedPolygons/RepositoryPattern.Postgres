@@ -1,6 +1,6 @@
 language: csharp
 sudo: false # faster builds
-dist: xenial
+dist: jammy
 services:
   - postgresql
 notifications:
@@ -15,7 +15,7 @@ before_install:
 install:
   - dotnet restore
 mono: none
-dotnet: 2.2
+dotnet: 6.0
 script:
   - dotnet restore
   - cd tests/
