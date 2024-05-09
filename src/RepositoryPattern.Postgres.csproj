@@ -25,7 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Npgsql" Version="6.0.6" />
+    <PackageReference Include="Npgsql" Version="8.0.3" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="GlitchedPolygons.RepositoryPattern" Version="1.0.6" />
   </ItemGroup>
